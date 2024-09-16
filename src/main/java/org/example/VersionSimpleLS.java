@@ -17,26 +17,10 @@ public class VersionSimpleLS {
         if (Files.isDirectory(dir)) {
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
                 for (Path fichero : stream) {
-                    if (Files.isDirectory(fichero)) {
-                        sb.append("d");
-                    }else{
-                        sb.append("-");
-                    }
-                    if (Files.isReadable(fichero)){
-                        sb.append("r");
-                    }else{
-                        sb.append("-");
-                    }
-                    if (Files.isWritable(fichero)) {
-                        sb.append("w");
-                    }else{
-                        sb.append("-");
-                    }
-                    if (Files.isExecutable(fichero)){
-                        sb.append("x");
-                    }else{
-                        sb.append("-");
-                    }
+                    sb.append(Files.isDirectory(fichero) ? "d" : "-");
+                    sb.append(Files.isReadable(fichero) ? "r" : "-");
+                    sb.append(Files.isWritable(fichero) ? "w" : "-");
+                    sb.append(Files.isExecutable(fichero) ? "x" : "-");
                     if (sb.charAt(0) == 'd'){
                         sb.append(" directorio");
                     }else{
