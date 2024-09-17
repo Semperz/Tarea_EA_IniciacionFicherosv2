@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class BusquedaCaracteres {
     public static void main(String[] args) {
+        System.out.println("Dime la ubicacion del archivo:");
         Scanner sc = new Scanner(System.in);
         String rutaArchivo = sc.nextLine();
         Path file = Path.of(rutaArchivo);
