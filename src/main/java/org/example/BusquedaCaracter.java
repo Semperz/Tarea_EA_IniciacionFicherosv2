@@ -17,9 +17,12 @@ public class BusquedaCaracter {
         Character charChose = scChar.next().charAt(0);
         try (BufferedReader lector = new BufferedReader(new FileReader(String.valueOf(file)))) {
             String linea;
-            long timesChar = 0l;
+            long timesChar = 0;
             while ((linea = lector.readLine()) != null) {
-                    timesChar = linea.chars().filter(c -> c == charChose).count();
+                    timesChar = linea
+                            .chars()
+                            .filter(c -> c == charChose)
+                            .count();
                 }
             System.out.println(timesChar);
         } catch (IOException e) {
