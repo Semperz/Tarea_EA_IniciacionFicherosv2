@@ -14,16 +14,17 @@ public class BusquedaCaracter {
         Path file = Path.of(rutaArchivo);
         System.out.println("Dime la letra a buscar:");
         Scanner scChar = new Scanner(System.in);
-        Character charChose = scChar.next().charAt(0);
+        Character charChose = scChar.nextLine().charAt(0);
         try (BufferedReader lector = new BufferedReader(new FileReader(String.valueOf(file)))) {
             String linea;
             long timesChar = 0;
             while ((linea = lector.readLine()) != null) {
-                    timesChar = linea
+                    timesChar += linea
                             .chars()
                             .filter(c -> c == charChose)
                             .count();
                 }
+
             System.out.println(timesChar);
         } catch (IOException e) {
             throw new RuntimeException(e);
