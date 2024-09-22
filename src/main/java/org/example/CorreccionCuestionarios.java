@@ -27,10 +27,11 @@ public class CorreccionCuestionarios {
                     examen = linea.substring(posicionPrimerBS + 1);
                 }
                 for (int i = 0; i < respuestasCorrectas.length(); i++) {
-                    if (respuestasCorrectas.charAt(i) != examen.charAt(i)
-                            && examen.charAt(i) != ' ') {
+                    if (respuestasCorrectas.charAt(i) != examen.charAt(i)){
                         notaAlumno -= 0.15;
-                    } else {
+                    } else if (examen.charAt(i) == ' '){
+                        notaAlumno += 0;
+                    }else{
                         notaAlumno += 0.5;
                     }
                 }
