@@ -15,7 +15,7 @@ public class Coches {
         String newFilePath = "res/marcas.txt";
         try (BufferedReader lector = new BufferedReader(new FileReader(String.valueOf(filePath)))) {
             String linea;
-            StringBuilder formatoOrdenado = new StringBuilder();
+            StringBuilder marcasOrdenadas = new StringBuilder();
             while ((linea = lector.readLine()) != null) {
                     int posicionPrimerBS = linea.indexOf(" ");
                 if (posicionPrimerBS == -1) {
@@ -26,18 +26,18 @@ public class Coches {
                     cocheMarca.merge(coche, marca, (a, b) -> a + ", " + b);
                     }
             for (HashMap.Entry<String, String> entry : cocheMarca.entrySet()){
-                formatoOrdenado.append(entry.getKey()).append(": ").append(entry.getValue()).append('\n');
+                marcasOrdenadas.append(entry.getKey()).append(": ").append(entry.getValue()).append('\n');
             }
-            fileReader(fileMaker(formatoOrdenado.toString(), Path.of(newFilePath)));
+            fileReader(fileMaker(marcasOrdenadas.toString(), Path.of(newFilePath)));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public static Path fileMaker(String formatoOrdenado, Path newFilePath) {
+    public static Path fileMaker(String marcasOrdenadas, Path newFilePath) {
         try {
             System.out.println("Se creó el fichero" + '\n');
             BufferedWriter escritor = Files.newBufferedWriter(newFilePath);
-            escritor.write(formatoOrdenado);
+            escritor.write(marcasOrdenadas);
             escritor.close();
         }catch (IOException e){
             System.err.println(e.getMessage());
